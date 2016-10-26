@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>SRS</title>
+            </f:facet>
+        </h:head>
+
+        <h:body style="background-color: #0d9cfa">
+
+            <p:layout fullPage="true">
+                    
+                    <p:layoutUnit position="north" size="80" resizable="false" style="background-color: activecaption" closable="true" collapsible="true" >
+                    <center>
+                        
+                        <p:menubar>
+                            
+                        <ui:insert name="menu">
+                            <p:menuitem value="Inicio" url="index.xhtml" icon="ui-icon ui-icon-home"/>
+                            <p:menuitem value="Informações" url="informacoes.xhtml" icon="ui-icon ui-icon-info"/>
+                        </ui:insert>
+                        
+                        <ui:insert name="menu_logado">
+                            <p:menuitem value="Inicio" url="indexlog.xhtml" icon="ui-icon ui-icon-home"/>
+                            <p:menuitem value="Reservas" onclick="#{reservaBean.listaReserva}" url="reservalog.xhtml" icon="ui-icon ui-icon-check"/>
+                            <p:menuitem value="Nova Reserva" url="cadastrarreserva.xhtml" icon="ui-icon ui-icon-check"/>
+                            <p:menuitem value="Minha Reserva" onclick="#{denunciaBean.listaMeusCasos()}" url="reservalog.xhtml" icon="ui-icon-star"/>
+                            <p:menuitem value="Minha Conta" onclick="#{usuarioBean.irMinhaConta()}" url="conta.xhtml" icon="ui-icon-person"/>
+                            <p:menuitem value="Informações" url="infolog.xhtml" icon="ui-icon ui-icon-info"/>
+                            <p:menuitem value="Sair" url="index.xhtml" icon="ui-icon ui-icon-close"/>
+                        </ui:insert>
+                        
+                        <ui:insert name="menu_logado_adm">
+                            <p:menuitem value="Inicio" url="indexlogadm.xhtml" icon="ui-icon ui-icon-home"/>
+                            <p:menuitem value="Salas" onclick="#{salaBean.listaSala()}" url="salas.xhtml" icon="ui-icon ui-icon-check"/>
+                            <p:menuitem value="Cadastrar Sala" url="cadastrarsala.xhtml" icon="ui-icon-star"/>
+                            <p:menuitem value="Reservas" onclick="#{reservaBean.listaReserva}" url="reservalogadm.xhtml" icon="ui-icon ui-icon-check"/>
+                            <p:menuitem value="Informações" url="infologadm.xhtml" icon="ui-icon ui-icon-info"/>
+                            <p:menuitem value="Sair" url="index.xhtml" icon="ui-icon ui-icon-close"/>
+                        </ui:insert>
+                            
+                    </p:menubar>
+                    </center>
+                
+                </p:layoutUnit>
+
+      
+                <ui:insert name="login">
+                    
+                </ui:insert>
+                
+                <p:layoutUnit position="center">
+                    
+                    <ui:insert name="pagina">
+                        <h:body style="background-color: black"> </h:body>
+                    </ui:insert>
+                    
+                </p:layoutUnit>
+            
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+

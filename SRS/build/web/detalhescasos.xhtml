@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SIAD</title>
+    </h:head>
+    <h:body>
+       <ui:composition template="./template.xhtml">
+           <ui:define name="menu">
+                
+            </ui:define>
+            
+                <ui:define  name="login">
+                    
+                </ui:define>
+           
+           <ui:define name="pagina" id="isso">
+               <h:form id="agrvai" >
+                <table>
+                    
+                <tr>
+                    <td><h:outputText value="Empresa"/></td>
+                    <td><p:inputText disabled="#{denunciaBean.edit}" value="#{denunciaBean.denuncia.empresa.nome}"/></td>
+                  
+                </tr>
+                <tr>
+                    <td><h:outputText value="Assunto"/></td>
+                    <td><p:inputText disabled="#{denunciaBean.edit}" value="#{denunciaBean.denuncia.assunto}"/></td>
+                </tr>
+                    </table>
+                
+                <table>
+                <tr>
+                    <td><h:outputText value="Descrição"/>
+                        <p:inputTextarea disabled="#{denunciaBean.edit}" id="anim" style="width:300px;height:100px;" autoResize="false" value="#{denunciaBean.denuncia.descricao}"/>
+                        <p:resizable for="anim" animate="true" effect="swing" effectDuration="normal"/>
+                        </td>
+                </tr>
+              
+                
+                </table>
+                <table>
+                <tr>
+                        <td><h:outputText value="Anônimo"/></td>
+                    <td>
+                        <p:selectOneRadio  value="#{denunciaBean.descricao}" >
+                            
+                            <f:selectItem itemLabel="Sim " itemValue="Sim" />  
+                            <f:selectItem itemLabel="Não " itemValue="Nao" /> 
+                         </p:selectOneRadio>
+                    </td>
+                    </tr>
+                    
+                    </table>
+                <hr></hr>
+                <table>    
+                    <tr>
+                    <td><h:outputText value="Concluido"/></td>
+                    <td>
+                        <p:selectOneRadio  value="#{denunciaBean.descricaoVo}" >
+                            
+                            <f:selectItem itemLabel="Sim " itemValue="Sim" />  
+                            <f:selectItem itemLabel="Não " itemValue="Nao" /> 
+                         </p:selectOneRadio>
+                    </td>
+                </tr>
+                
+              </table>
+                <table>
+                    <h:panelGrid rendered="#{denunciaBean.terminada}" style="color: " columns="2" cellpadding="5" bgcolor="gainsboro">  
+        <h:outputText value="Estrelas" />  
+        <p:rating value="#{denunciaBean.denuncia.voto}" disabled="#{denunciaBean.edit2}" />
+                    </h:panelGrid> 
+                
+                    <tr>
+                        <td><h:outputText rendered="#{denunciaBean.terminada}" value="Descrever Resolução"/></td>
+                        <td>
+                            <p:inputTextarea rendered="#{denunciaBean.terminada}" disabled="#{denunciaBean.edit2}" id="animation" style="width:300px;height:100px;" autoResize="false" value="#{denunciaBean.denuncia.descricaoVoto}"/>
+                        <p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/>
+                        </td>
+                    </tr>      
+                    
+                </table>
+                <table>
+                   <tr>
+                       <td><p:commandButton value="Editar" action="#{denunciaBean.butaoEdit()}" image="ui-icon ui-icon-pencil"/></td>
+                       <td><p:commandButton value="#{denunciaBean.bnc}" action="#{denunciaBean.butaoEncerrar()}" update="agrvai" image="ui-icon ui-icon-pencil"/></td>
+                    <td><p:commandButton value="Excluir" action="#{denunciaBean.butaoExcuir()}" image="ui-icon ui-icon-close"/></td>
+                   </tr>
+                </table>
+                
+                   </h:form>
+             
+           </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Conta</title>
+    </h:head>
+    <h:body >
+        <ui:composition template="./template.xhtml">
+            <ui:define name="menu">
+                
+            </ui:define>
+            
+                <ui:define  name="login">
+                    
+                </ui:define>
+            <ui:define name="menu_logado_adm">
+                
+            </ui:define>
+           <ui:define name="pagina" >
+       
+               <h:form id="for">
+                   
+            <table>
+                
+                <tr>
+                    <td><p:outputLabel value="Nome"/></td>
+                    <td><p:inputText disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.nome}"/></td>
+                    
+                    <td><p:outputLabel value="Telefone" /></td>
+                    <td><p:inputText disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.telefone}"/></td>
+                </tr>
+                <tr>
+                    <td><p:outputLabel value="Matricula"/></td>
+                    <td><p:inputText disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.matricula}"/></td>
+                    
+                    <td><p:outputLabel value="Email"/></td>
+                    <td><p:inputText disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.email}"/></td>
+                </tr>
+                <tr>
+                    <td><p:outputLabel value="Login"/></td>
+                    <td><p:inputText disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.login}"/></td>
+                    
+                    <td><h:outputText value="Curso"/></td>
+                    <td>
+                        <p:selectOneMenu disabled="#{usuarioBean.edit}" value="#{usuarioBean.usuario.curso}" >
+                            <f:selectItem itemLabel="Ciencias da Computacao" itemValue="Ciencias da Computacao" />
+                            <f:selectItem itemLabel="Design Digital" itemValue="Design Digital" />  
+                            <f:selectItem itemLabel="Engenharia de Software " itemValue="Engenharia de Software" />  
+                            <f:selectItem itemLabel="Engenharia da Computacao" itemValue="Engenharia da Computacao" />  
+                            <f:selectItem itemLabel="Sistemas de Informacao " itemValue="Sistemas de Informacao" />
+                         </p:selectOneMenu>
+                    </td>
+                </tr>
+                    
+                </table>
+            <table>
+                <tr>
+                    <td><p:commandButton value="#{usuarioBean.nome}" action="#{usuarioBean.butaoEditar()}" update="for"/></td>
+                    <td><p:commandButton value="#{usuarioBean.matricula}" action="#{usuarioBean.butaoExcluir()}" update="for"/></td>
+                </tr>
+            </table>
+                   <h:outputText value="#{usuarioBean.msg}" style="color:red" rendered="true"/>
+        </h:form>
+        </ui:define>
+        </ui:composition>
+            
+    </h:body>
+</html>
+

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SIAD</title>
+    </h:head>
+    <h:body>
+        
+        <ui:composition template="./template.xhtml">
+            <ui:define name="menu_logado">
+                
+            </ui:define>
+            
+                <ui:define  name="login">
+                    
+                </ui:define>
+           <ui:define name="pagina">
+               
+               <h:form>
+                   <p:dataTable var="cur" id="tabela" value="#{denunciaBean.listarcasos}" paginator="true" rows="10"  
+                                rowKey="#{cur.id}" expandedRow="false" emptyMessage="Casos não encontrados" selection="#{denunciaBean.denuncia}" selectionMode="single" >  
+                      <f:facet name="header">  
+                        Casos
+                      </f:facet>
+  
+                      <p:column selectionMode="single" style="width:3%"/>
+                      <p:column headerText="Empresa">  
+             #{cur.empresa.nome}  
+         </p:column>  
+  
+         <p:column headerText="Assunto">  
+             #{cur.assunto}  
+         </p:column> 
+         <p:column headerText="Descrição">  
+             #{cur.gambs}  
+         </p:column> 
+         <p:column headerText="Estado">  
+             #{cur.estadoD}  
+         </p:column> 
+              <f:facet name="footer">  
+                  <p:commandButton value="Detalhes" action="#{denunciaBean.telaDetalhes()}" image="ui-icon ui-icon-search"/>  
+              </f:facet> 
+  
+         </p:dataTable> 
+                 
+            </h:form> 
+           </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

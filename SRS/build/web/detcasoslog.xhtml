@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SRS</title>
+    </h:head>
+    <h:body>
+       <ui:composition template="./template.xhtml">
+           <ui:define name="menu">
+                
+            </ui:define>
+            <ui:define name="menu_logado_adm">
+                
+            </ui:define>
+                <ui:define  name="login">
+                    
+                </ui:define>
+           
+            <ui:define name="pagina">
+            <h:form>
+                <hr></hr>
+                <center>Detalhes Caso</center>
+                <hr></hr>
+                <table>
+                 <tr>
+                    <td><h:outputText value="Usuario"/></td>
+                    <td><p:inputText disabled="#{denunciaBean.edit}" value="#{denunciaBean.denuncia.usuario.nome}"/></td>
+                  
+                </tr>   
+                <tr>
+                    <td><h:outputText value="Empresa"/></td>
+                    <td><p:inputText disabled="#{denunciaBean.edit}" value="#{denunciaBean.denuncia.empresa.nome}"/></td>
+                  
+                </tr>
+                <tr>
+                    <td><h:outputText value="Assunto"/></td>
+                    <td><p:inputText disabled="#{denunciaBean.edit}" value="#{denunciaBean.denuncia.assunto}"/></td>
+                </tr>
+                    </table>
+                
+                <table>
+                <tr>
+                    <td><h:outputText value="Descrição"/>
+                        <p:inputTextarea disabled="#{denunciaBean.edit}" id="anim" style="width:300px;height:100px;" autoResize="false" value="#{denunciaBean.descricao}"/>
+                        <p:resizable for="anim" animate="true" effect="swing" effectDuration="normal"/>
+                        </td>
+                </tr>
+              
+                
+                </table>
+                
+                <hr></hr>
+                <table>    
+                    <tr>
+                    <td><h:outputText value="Concluido"/></td>
+                    <td>
+                        <p:selectOneRadio  value="#{denunciaBean.descricao}" >
+                            
+                            <f:selectItem itemLabel="Sim " itemValue="Sim" />  
+                            <f:selectItem itemLabel="Não " itemValue="Nao" /> 
+                         </p:selectOneRadio>
+                    </td>
+                </tr>
+                
+              </table>    
+                <table>
+                    <h:panelGrid style="color: " columns="2" cellpadding="5" bgcolor="gainsboro">  
+        <h:outputText value="Estrelas" rendered="#{denunciaBean.terminada}"  />  
+        <p:rating value="#{denunciaBean.denuncia.voto}"  disabled="#{denunciaBean.edit}" rendered="#{denunciaBean.terminada}" />
+                    </h:panelGrid> 
+                
+                    <tr>
+                        <td><h:outputText value="Descrever Resolução" rendered="#{denunciaBean.terminada}" /></td>
+                        <td>
+                            <p:inputTextarea id="animation" disabled="#{denunciaBean.edit}" style="width:300px;height:100px;" autoResize="false" value="#{denunciaBean.denuncia.descricaoVoto}" rendered="#{denunciaBean.terminada}" />
+                        <p:resizable for="animation" animate="true" effect="swing" effectDuration="normal"/>
+                        </td>
+                    </tr>      
+                    
+            </table>
+                
+                   </h:form>
+             
+           </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
